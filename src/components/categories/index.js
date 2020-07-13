@@ -7,9 +7,9 @@ import {Button, ButtonGroup} from '@material-ui/core';
 const Categories = (props) => {
   return (
     <>
-      <h3>Categories</h3>
+      <h3 className="h3h3">Categories</h3>
       <div className='categories'>
-        <ButtonGroup variant="contained" color="secondary" disableElevation>
+        <ButtonGroup orientation="vertical" size="large" variant="text" color="secondary" disableElevation>
 
           {props.catAndProReducer.categories.map(category => {
             return (

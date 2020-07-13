@@ -14,6 +14,7 @@ const initialState = {
       { name: 'Bread', category: 'food', price: 2.39, inStock: 90, img:'https://via.placeholder.com/150' },
     ],
     activeCategory: '',
+    productList:[]
   };
   export default (state = initialState, action) => {
     const { type, payload } = action;
@@ -22,6 +23,13 @@ const initialState = {
     case 'CATEGORY':
       const activeCategory = payload;      
       return { ...state, activeCategory };
+    case 'LIST':
+      state.productList.push(payload);      
+      return { ...state, productList:state.productList };
+    case 'REMOVE': 
+      
+      state.productList.splice(payload,1);
+      return { ...state, productList:state.productList };
   
     default:
       return state;
@@ -34,5 +42,19 @@ const initialState = {
     return {
       type: 'CATEGORY',
       payload: category,
+    };
+  };
+
+  export const triggerList = (productName) => {
+    return {
+      type: 'LIST',
+      payload: productName,
+    };
+  };
+
+  export const triggerRemove = (productName) => {
+    return {
+      type: 'REMOVE',
+      payload: productName,
     };
   };

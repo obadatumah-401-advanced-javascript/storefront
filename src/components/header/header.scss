@@ -10,7 +10,7 @@ body, html{
         width: 100%;
         padding: 1% 0;
         background-color: #7c7a7a;
-        box-shadow: 0 10px 8px grey;
+        box-shadow: 0 10px 8px rgba(221, 108, 123, 0.5);
         display: flex;
         justify-content: center;
        
@@ -22,6 +22,7 @@ body, html{
             display: block;
             position: absolute;
             right: 34px;
+            top:38px
         }
     }
     main{
@@ -29,28 +30,41 @@ body, html{
         h3 {
             text-align: center;
         }
+        .h3h3{
+            float: right;
+        }
         .categories{
             display: flex;
-            justify-content:center;
-            h3 {
+            justify-content:flex-end;
+            padding: 14px;
+            float: right;
+            clear: both;
+            .pro {
                 font-size: 25px;
                 align-self: center;
                 margin-left: 23px;
                 margin-right: 30px;
+                text-align: right;
             }
         }
         .products{
             display: flex;
             flex-direction: row;
             justify-content: space-evenly;
+            min-height: 500px;
+        }
+        .productsList{
+            position: absolute;
+            left: 0px;
+
         }
     }
     #footer{
         width: 100%;
         background-color: black;
-        position:fixed;
+        // position:fixed;
         left:0px;
-        bottom:0px;
+        // bottom:0px;
         height:35px;
         p{
             color: white;
@@ -59,9 +73,7 @@ body, html{
     }
 }
 
-// @keyframes example {
-//   0%   {background-color: red;}
-//   25%  {background-color: yellow;}
-//   50%  {background-color: blue;}
-//   100% {background-color: green;}
-// }
+body main h3, html main h3 {
+    text-align: end;
+    padding: 38px;
+}

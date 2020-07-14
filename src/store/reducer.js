@@ -1,3 +1,5 @@
+import superagent from 'superagent';
+
 const initialState = {
     categories: [
       { name: 'electronics', displayName: 'Elecronics' },
@@ -14,8 +16,10 @@ const initialState = {
       { name: 'Bread', category: 'food', price: 2.39, inStock: 90, img:'https://via.placeholder.com/150' },
     ],
     activeCategory: '',
-    productList:[]
+    productList:[],
+    results: []
   };
+
   export default (state = initialState, action) => {
     const { type, payload } = action;
   
@@ -24,12 +28,16 @@ const initialState = {
       const activeCategory = payload;      
       return { ...state, activeCategory };
     case 'LIST':
-      state.productList.push(payload);      
+      state.productList.push(payload);   
+      console.log('listArray:',state.productList)   
       return { ...state, productList:state.productList };
     case 'REMOVE': 
-      
       state.productList.splice(payload,1);
       return { ...state, productList:state.productList };
+      
+    case 'GET':
+      state.results.push(payload);
+      return {results:state.results };
   
     default:
       return state;
@@ -58,3 +66,24 @@ const initialState = {
       payload: productName,
     };
   };
+
+  export const getAction = payload => {
+    return {
+        type: 'GET',
+        payload: payload
+    }
+};
+
+////////////////////////////////////////////////////////////////////
+let api = 'https://rowaid-server.herokuapp.com/api/v1/products'; 
+
+export const getRemoteData =() => dispatch => {
+
+  // call my data 
+  return superagent.get(api)
+      .then(data => {
+          // dispatch the action getAction
+          dispatch(getAction(data.body))
+      });
+}
+///////////////////////////////////////////////////////////////////////

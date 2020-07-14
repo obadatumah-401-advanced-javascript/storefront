@@ -1,12 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { triggerList,triggerRemove } from '../../store/reducer';
+import { connect ,dispatch} from 'react-redux';
+import { triggerList,triggerRemove ,getAction,getRemoteData} from '../../store/reducer';
 import {Button, ButtonGroup} from '@material-ui/core';
 
 
 const Products = (props) => {
+    // const fetchData = (e) => {
+    //     e && e.preventDefault(); // if I have a form
+    //     // props.get();
+    //     console.log('dataaaaanew ----',props.get());
+    // }
+
   return (
     <>
+    {/* <button onClick={fetchData}>CLICK</button> */}
        <div class="productsList"> <ul>{props.catAndProReducer.productList.map((val,i)=>{
            return(
                <li>
@@ -43,6 +50,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {triggerList,triggerRemove};
+// const mapDispatchToProps2 = (dispatch) => ({
+//     get: ()=> dispatch(getRemoteData()),
+//     // put: (id, data) => dispatch(actions.putRemoteData(id, data)),
+// });
 
 // const mapDispatchToProps2 = {triggerRemove};
 

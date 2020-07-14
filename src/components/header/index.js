@@ -8,7 +8,9 @@ import './header.scss';
   return (
     <header id='header'>
       <h1 >Our Store</h1>
+      {console.log('array:',props.catAndProReducer)}
   <span id='cart'>Cart  ({ props.catAndProReducer.productList.length})</span>
+  
     </header>
   );
 } 
